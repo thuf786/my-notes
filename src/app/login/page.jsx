@@ -59,7 +59,7 @@ async function addDataToFireStore(email, password) {
       setEmail("");
       setPassword("");
       alert("Login successful!");
-      router.push("/notes"); 
+      router.push("/Pages/dashboard"); 
     } else {
       alert("Error adding data. Check console for details.");
     }
