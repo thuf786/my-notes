@@ -1,12 +1,15 @@
-import React from 'react'
-import LoginFormComponent from './login/page'
+import { redirect } from "next/navigation";
+import LoginFormComponent from "./login/page";
 
-const page = () => {
+export default function HomePage() {
+  const user = null; 
+  if (!user) {
+    redirect("/login");
+  }
+
   return (
     <div>
-        <LoginFormComponent/>
+      <LoginFormComponent />
     </div>
-  )
+  );
 }
-
-export default page
