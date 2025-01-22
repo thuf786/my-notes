@@ -6,13 +6,13 @@ export default function Sidebar() {
       <h1 className="text-2xl font-bold mb-4">Sidebar</h1>
       <ul>
         <li className="mb-2 cursor-pointer">
-          <Link href="/">Dashboard</Link>
+          <Link href="/Pages/dashboard">Dashboard</Link>
         </li>
         <li className="mb-2 cursor-pointer">
-          <Link href="/display">Display</Link>
+          <Link href="/Pages/display">Display</Link>
         </li>
         <li className="mb-2 cursor-pointer">
-          <Link href="/saved-notes">Saved Notes</Link>
+          <Link href="/Pages/savednotes">Saved Notes</Link>
         </li>
       </ul>
     </aside>

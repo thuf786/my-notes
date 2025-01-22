@@ -12,6 +12,7 @@ import {
     serverTimestamp,
 } from "firebase/firestore";
 import Link from "next/link";
+import Sidebar from "@/Components/Sidebar";
 
 export default function Dashboard() {
     const [note, setNote] = useState("");
@@ -55,21 +56,7 @@ export default function Dashboard() {
     return (
         <div className="flex h-screen">
 
-            <aside className="w-1/4 bg-gray-800 text-white p-4">
-                <h1 className="text-2xl font-bold mb-4 ">Sidebar</h1>
-                <ul className="sidebar">
-                    <li className="mb-2 cursor-pointer">
-                        <Link href="/Pages/dashboard">Dashboard</Link>
-                    </li>
-                    <li className="mb-2 cursor-pointer">
-                        <Link href="/Pages/display">Display</Link>
-                    </li>
-                    <li className="mb-2 cursor-pointer">
-                        <Link href="/Pages/savednotes">Saved Notes</Link>
-
-                    </li>
-                </ul>
-            </aside>
+           <Sidebar/>
 
 
             <main className="flex-1 bg-gray-100 p-4 flex flex-col justify-between">
