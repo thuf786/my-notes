@@ -15,6 +15,7 @@ import Link from "next/link";
 import Sidebar from "@/Components/Sidebar";
 
 export default function Dashboard() {
+    const [title,setTitle] = useState("");
     const [note, setNote] = useState("");
     const [notes, setNotes] = useState([]);
     const router = useRouter();
@@ -43,6 +44,7 @@ export default function Dashboard() {
         if (note.trim() === "") return;
         try {
             const docRef = await addDoc(collection(db, "notes"), {
+                title: title || "Untitled",
                 content: note,
                 timestamp: serverTimestamp(),
             });
@@ -56,7 +58,7 @@ export default function Dashboard() {
     return (
         <div className="flex h-screen">
 
-           <Sidebar/>
+            <Sidebar />
 
 
             <main className="flex-1 bg-gray-100 p-4 flex flex-col justify-between">
@@ -77,22 +79,30 @@ export default function Dashboard() {
 
 
                 <div className="mt-4">
-                    <textarea
-                        value={note}
-                        onChange={(e) => setNote(e.target.value)}
-                        placeholder="Write your note here..."
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
-                    />
-                    <button
-                        onClick={async () => {
-                            await addNote();
-                            router.push("/Pages/savednotes");
-                        }}
-                        className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    >
-                        Add Note
-                    </button>
-
+                    <form onSubmit={(e) => e.preventDefault()}>
+                        <input
+                            type="text"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            placeholder="Title"
+                            className="block w-full p-2 mb-2 border rounded"
+                        />
+                        <textarea
+                            value={note}
+                            onChange={(e) => setNote(e.target.value)}
+                            placeholder="Write your note here..."
+                            className="w-full p-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
+                        />
+                        <button
+                            onClick={async () => {
+                                await addNote();
+                                router.push("/Pages/savednotes");
+                            }}
+                            className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                        >
+                            Add Note
+                        </button>
+                    </form>
                 </div>
             </main>
         </div>

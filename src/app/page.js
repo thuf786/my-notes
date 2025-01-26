@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import LoginFormComponent from "./login/page";
+import LoginFormComponent from "@/Components/login-form";
 
 export default function HomePage() {
   // const user = null; 
